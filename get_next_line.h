@@ -6,7 +6,7 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:31:09 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/01/19 12:11:04 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/01/22 13:58:39 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #  define BUFFER_SIZE 8
 # endif
 
-# include <stddef.h>
+# include <stdlib.h>
 
 char				*find_nl(char *s);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);

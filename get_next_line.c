@@ -6,11 +6,11 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:30:58 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/01/19 12:11:41 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/01/22 13:58:42 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <sys/select.h>
 #include <unistd.h>
 #include "get_next_line.h"
 
@@ -73,26 +73,26 @@ int		read_fd(char **line, int fd, char **str)
 
 int		get_next_line(int fd, char **line)
 {
-	static char *str = NULL;
+	static char *str[FD_SETSIZE];
 	int			ret;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
-	if (str == NULL)
-		str = ft_strdup("");
-	if (!str)
+	if (str[fd] == NULL)
+		str[fd] = ft_strdup("");
+	if (!str[fd])
 		return (-1);
-	if (find_nl(str) != NULL)
+	if (find_nl(str[fd]) != NULL)
 	{
 		*line = ft_strdup("");
-		ret = write_to_line(line, str, &str, find_nl(str));
+		ret = write_to_line(line, str[fd], &str[fd], find_nl(str[fd]));
 	}
 	else
 	{
-		*line = ft_strdup(str);
+		*line = ft_strdup(str[fd]);
 		if (!*line)
-			free_string(-1, str);
-		ret = read_fd(line, fd, &str);
+			free_string(-1, str[fd]);
+		ret = read_fd(line, fd, &str[fd]);
 	}
 	return (ret);
 }

@@ -6,11 +6,10 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:31:22 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/01/19 10:31:23 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/01/22 13:58:58 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "get_next_line.h"
 
 char	*find_nl(char *s)
