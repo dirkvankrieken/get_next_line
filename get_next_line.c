@@ -6,12 +6,13 @@
 /*   By: dvan-kri <dvan-kri@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/19 10:30:58 by dvan-kri      #+#    #+#                 */
-/*   Updated: 2021/01/22 13:58:42 by dvan-kri      ########   odam.nl         */
+/*   Updated: 2021/11/08 18:21:47 by dvan-kri      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/select.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "get_next_line.h"
 
 int		free_string(int ret, char *s)
@@ -94,5 +95,6 @@ int		get_next_line(int fd, char **line)
 			free_string(-1, str[fd]);
 		ret = read_fd(line, fd, &str[fd]);
 	}
+	printf(">>>%s<<<", str[fd]);
 	return (ret);
 }
